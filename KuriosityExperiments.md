@@ -19,7 +19,7 @@ Small data results
 *Requires no other kerbals on vessel and in space, takes a long time to run*
 Small data results
 ## Micrometeor
-*No requirements, can repeat*
+*No requirements, can repeat on subsequent flights*
 Moderate sample result
 ## U.F.K (Unidentified Flying Kraken)
 *Requires being in a cupola part, takes a long time to run*

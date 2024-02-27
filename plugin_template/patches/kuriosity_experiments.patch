@@ -122,7 +122,7 @@
     KuriosityExperimentRequired: "";
     MinimumResourcesRequired: [];
     CommNetStateRequired: "Any";
-    IsRerunnable: false;
+    IsRerunnable: true;
     ApplyScienceMultiplier: false;
     AllowHomePlanet: true;
 }

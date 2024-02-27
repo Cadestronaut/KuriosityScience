@@ -295,8 +295,8 @@ public class KuriosityExperimentTracker
     public void UpdateExperimentPrecedence(VesselComponent vessel, Data_KuriosityScience dataKuriosityScience, Guid kerbalId)
     {
         //KuriositySciencePlugin.Logger.LogDebug($"UpdateExperimentPrecedence");
-        if (State != KuriosityExperimentState.Completed
-            && State != KuriosityExperimentState.Uninitialized
+        if (!(State == KuriosityExperimentState.Completed
+            || State == KuriosityExperimentState.Uninitialized)
             && IsExperimentValid(vessel, dataKuriosityScience, kerbalId))
         {
             if (dataKuriosityScience.PartPriorityExperiments.Contains(Experiment.ExperimentId))
@@ -323,7 +323,7 @@ public class KuriosityExperimentTracker
     /// <param name="kerbal">the kerbal that has completed the experiment</param>
     /// <param name="vessel">the kerbal's current vessel</param>
     public void TriggerExperiment(KerbalInfo kerbal, VesselComponent vessel)
-    {
+    { 
         PartComponentModule_ScienceExperiment _moduleScienceExperiment = GetVessel_PartComponentModule_ScienceExperiment(vessel);
 
         if (_scienceManager == null)
@@ -373,7 +373,7 @@ public class KuriosityExperimentTracker
         if (newExperimentDefinition.ExperimentType == ScienceExperimentType.DataType || newExperimentDefinition.ExperimentType == ScienceExperimentType.Both)
         {
             string flavorText = _scienceManager.ScienceExperimentsDataStore.GetFlavorText(newExperimentDefinition.ExperimentID, _moduleScienceExperiment._currentLocation.ResearchLocationId, ScienceReportType.DataType);
-            KuriositySciencePlugin.Logger.LogDebug($"Report data flavor: {flavorText}");
+            //KuriositySciencePlugin.Logger.LogDebug($"Report data flavor: {flavorText}");
             ResearchReport researchReport = new ResearchReport(newExperimentDefinition.ExperimentID, newExperimentDefinition.DataReportDisplayName, _moduleScienceExperiment._currentLocation, ScienceReportType.DataType, newExperimentDefinition.DataValue, flavorText);
             _moduleScienceExperiment._storageComponent.StoreResearchReport(researchReport);
         }
@@ -382,7 +382,7 @@ public class KuriosityExperimentTracker
         {
             //as of 0.2.1 GetFlavorText is currently bugged for returning 'default' Sample flavor descriptions, so need to add a default Data Flavor description for those experiments
             string flavorText2 = _scienceManager.ScienceExperimentsDataStore.GetFlavorText(newExperimentDefinition.ExperimentID, _moduleScienceExperiment._currentLocation.ResearchLocationId, ScienceReportType.SampleType);
-            KuriositySciencePlugin.Logger.LogDebug($"Report sample flavor: {flavorText2}");
+            //KuriositySciencePlugin.Logger.LogDebug($"Report sample flavor: {flavorText2}");
             ResearchReport researchReport2 = new ResearchReport(newExperimentDefinition.ExperimentID, newExperimentDefinition.SampleReportDisplayName, _moduleScienceExperiment._currentLocation, ScienceReportType.SampleType, newExperimentDefinition.SampleValue, flavorText2);
             _moduleScienceExperiment._storageComponent.StoreResearchReport(researchReport2);
         }

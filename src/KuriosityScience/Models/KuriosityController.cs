@@ -83,6 +83,7 @@ public class KuriosityController
     /// <param name="currentKuriosityFactor">The current Kuriosity Factor that should be applied to the running experiment</param>
     public void UpdateActiveExperiment(double currentKuriosityFactor)
     {
+
         //KuriositySciencePlugin.Logger.LogDebug($"UpdateActiveExperiment");
         string newActiveExperimentId;
 
@@ -112,6 +113,11 @@ public class KuriosityController
                 ActiveExperimentTracker.CurrentKuriosityFactor = currentKuriosityFactor;
 
                 KuriositySciencePlugin.Logger.LogDebug($"Experiment running: {ActiveExperimentId} TimeLeft: {Utility.ToDateTime(ActiveExperimentTracker.TimeLeft)}");
+            } else
+            {
+                ActiveExperimentId = string.Empty;
+                KuriositySciencePlugin.Logger.LogDebug($"All possible experiments completed");
+
             }
         }
 
