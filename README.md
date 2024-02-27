@@ -1,7 +1,7 @@
 # Kuriosity Science
 Kurious events that inspire our kerbals to complete some science!
 
-[SpaceDock](www.spacedock.com)
+[SpaceDock](https://spacedock.info/mod/3572/Kuriosity%20Science)
 
 ## Features
 - Generate completed science experiments from your kerbals whilst they're in flight
