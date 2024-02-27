@@ -1,0 +1,98 @@
+// Suggest labs are 160%, cabins, eva, seat are 100%, pod&cockpit are 60%, cupola is 120%
+// Cupola is: pod_2v_cupola_crew
+
+
+:parts (~#lab* ~#pod* ~#cockpit* ~#*cupola*) {
+    @if $$crewCapacity > 0 {
+        +Module_KuriosityScience {
+            +Data_KuriosityScience {
+                PartKuriosityFactorAdjustment: 1.1;
+                AllowedKuriosityExperiments +: [
+                    "space_sickness",
+                    "bugs",
+                    "mun_cheesecake",
+                    "kedankenexperiment",
+                    "ghost_in_the_machine",
+                    "kabin_fever",
+                    "micrometeor",
+                    "karicebo"
+                ];
+                PartPriorityExperiments +: [
+                    "mun_cheesecake"
+                ];
+            }
+        }
+    }
+}
+
+
+:parts #lab* {
+    @if $$crewCapacity > 0 {
+        +Module_KuriosityScience {
+            +Data_KuriosityScience {
+                PartKuriosityFactorAdjustment: 1.6;
+                AllowedKuriosityExperiments +: [
+                    "space_sickness",
+                    "bugs",
+                    "mun_cheesecake",
+                    "kedankenexperiment",
+                    "ghost_in_the_machine",
+                    "kabin_fever",
+                    "micrometeor",
+                    "karicebo"
+                ];
+                PartPriorityExperiments +: [
+                    "mun_cheesecake"
+                ];
+            }
+        }
+    }
+}
+
+:parts (#pod*, #cockpit*) ~#*cupola*  {
+    @if $$crewCapacity > 0 {
+        +Module_KuriosityScience {
+            +Data_KuriosityScience {
+                PartKuriosityFactorAdjustment: 0.6;
+                AllowedKuriosityExperiments +: [
+                    "space_sickness",
+                    "bugs",
+                    "mun_cheesecake",
+                    "kedankenexperiment",
+                    "ghost_in_the_machine",
+                    "kabin_fever",
+                    "micrometeor",
+                    "karicebo"
+                ];
+                PartPriorityExperiments +: [
+                    "mun_cheesecake"
+                ];
+            }
+        }
+    }
+}
+
+:parts #*cupola* {
+    @if $$crewCapacity > 0 {
+        +Module_KuriosityScience {
+            +Data_KuriosityScience {
+                PartKuriosityFactorAdjustment: 1.2;
+                AllowedKuriosityExperiments +: [
+                    "space_sickness",
+                    "bugs",
+                    "mun_cheesecake",
+                    "kedankenexperiment",
+                    "ghost_in_the_machine",
+                    "kabin_fever",
+                    "micrometeor",
+                    "karicebo",
+                    "ufk"
+                ];
+                PartPriorityExperiments +: [
+                    "mun_cheesecake",
+                    "ufk"
+                ];
+            }
+        }
+    }
+}

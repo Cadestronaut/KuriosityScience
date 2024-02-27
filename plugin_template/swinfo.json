@@ -1,0 +1,23 @@
+{
+  "spec": "2.0",
+  "mod_id": "KuriosityScience",
+  "author": "Roly Cade",
+  "name": "Kuriosity Science",
+  "description": "Random occurrences of kurious science events!",
+  "source": "https://github.com/rolycade",
+  "version": "1.0.0",
+  "version_check": "https://github.com/rolycade",
+  "ksp2_version": {
+    "min": "0.2.0",
+    "max": "*"
+  },
+  "dependencies": [
+    {
+      "id": "com.github.x606.spacewarp",
+      "version": {
+        "min": "1.8.0",
+        "max": "*"
+      }
+    }
+  ]
+}

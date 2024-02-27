@@ -1,0 +1,160 @@
+/*
+@new(kuriosity_experiment, template)
+:json {
+    ExperimentID: "template";
+    MeanTimeToHappen: 9201600;  //1 year
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    CommNetStateRequired: "Any"; // "Connected", "Disconnected"
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+*/
+
+@new(kuriosity_experiment, space_sickness)
+:json {
+    ExperimentID: "space_sickness";
+    MeanTimeToHappen: 2160000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, bugs)
+:json {
+    ExperimentID: "bugs";
+    MeanTimeToHappen: 2160000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, mun_cheesecake)
+:json {
+    ExperimentID: "mun_cheesecake";
+    MeanTimeToHappen: 540000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, kedankenexperiment)
+:json {
+    ExperimentID: "kedankenexperiment";
+    MeanTimeToHappen: 17280000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, ghost_in_the_machine)
+:json {
+    ExperimentID: "ghost_in_the_machine";
+    MeanTimeToHappen: 4320000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: true;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, kabin_fever)
+:json {
+    ExperimentID: "kabin_fever";
+    MeanTimeToHappen: 8640000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: 0;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, micrometeor)
+:json {
+    ExperimentID: "micrometeor";
+    MeanTimeToHappen: 4320000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, ufk)
+:json {
+    ExperimentID: "ufk";
+    MeanTimeToHappen: 12960000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Any";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}
+
+@new(kuriosity_experiment, karicebo)
+:json {
+    ExperimentID: "karicebo";
+    MeanTimeToHappen: 8640000;
+    MinimumVesselAdditionalCrew: 0;
+    MaximumVesselAdditionalCrew: -1;
+    RequiresProbeCore: false;
+    TechRequired: "";
+    KuriosityExperimentRequired: "";
+    MinimumResourcesRequired: [];
+    CommNetStateRequired: "Connected";
+    IsRerunnable: false;
+    ApplyScienceMultiplier: false;
+    AllowHomePlanet: true;
+}

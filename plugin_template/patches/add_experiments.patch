@@ -1,0 +1,568 @@
+@new("cadetesting_experiment_test1")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/Test1";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Test1";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/Test1";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/Test1"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 50;
+    TransmissionSize: 8;
+    RequiresEVA: false;
+}
+
+@new("cadetesting_experiment_test2")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/Test2";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Test2";
+	ExperimentType: "Both";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/Test2";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/Test2";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/Test2"
+		}
+	];
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/Test2"
+		}
+	];
+    ValidLocations: [
+        {
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 10;
+    SampleValue: 20;
+    TransmissionSize: 2;
+    RequiresEVA: false;
+}
+
+@new("cadetesting_experiment_test3")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/Test3";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Test3";
+	ExperimentType: "Both";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/Test3";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/Test3";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/Test3"
+		}
+	];
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/Test3"
+		}
+	];
+    ValidLocations: [
+        {
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 10;
+    SampleValue: 20;
+    TransmissionSize: 2;
+    RequiresEVA: false;
+}
+
+/// Non-test experiments here
+///
+/// Current bodies are: Bop, Dres, Duna, Eeloo, Eve, Gilly, Ike, Jool, Kerbin, Kerbol, Laythe, Minmus, Moho, Mun, Pol, Tylo, Val
+
+/// Due to a bug with KSP2 0.2.1 any SampleType experiment needs to have a default DataFlavorDescription as it uses that instead of the default SampleFlavorDescription
+
+// kerbal vomited in space - 100 days (21,600)
+@new("space_sickness")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/SpaceSickness";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/SpaceSickness";
+	ExperimentType: "Both";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/SpaceSickness";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/SpaceSickness";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/SpaceSickness"
+		}
+	];
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/SpaceSickness"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 25;
+    SampleValue: 50;
+    TransmissionSize: 6;
+    RequiresEVA: false;
+}
+
+//stowaway bugs
+@new("bugs")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/Bugs";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Bugs";
+	ExperimentType: "SampleType";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/Bugs";
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/Bugs"
+		}
+	];
+    DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/Bugs"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    SampleValue: 80;
+    TransmissionSize: 0;
+    RequiresEVA: false;
+}
+
+// a great recipe for cheesecake
+@new("mun_cheesecake")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/MunCheesecake";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/MunCheesecake";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/MunCheesecake";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/MunCheesecake"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Mun",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Mun",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Mun",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 100;
+    TransmissionSize: 10;
+    RequiresEVA: false;
+}
+
+// Kedankenexperiment, long time to run
+@new("kedankenexperiment")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/KedankenExperiment";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/KedankenExperiment";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/KedankenExperiment";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/KedankenExperiment"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 400;
+    TransmissionSize: 40;
+    RequiresEVA: false;
+}
+
+// Ghost in the machine, needs probe core
+@new("ghost_in_the_machine")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/GhostInTheMachine";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/GhostInTheMachine";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/GhostInTheMachine";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/GhostInTheMachine"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 80;
+    TransmissionSize: 8;
+    RequiresEVA: false;
+}
+
+// Kabin fever, needs to be alone
+@new("kabin_fever")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/KabinFever";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/KabinFever";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/KabinFever";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/KabinFever"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 120;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+// micrometeor
+@new("micrometeor")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/MicroMeteor";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/MicroMeteor";
+	ExperimentType: "SampleType";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/MicroMeteor";
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/MicroMeteor"
+		}
+	];
+    DataFlavorDescriptions: [
+        {
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/MicroMeteor"
+		}
+    ];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    SampleValue: 200;
+    TransmissionSize: 0;
+    RequiresEVA: false;
+}
+
+// Unidentified Flying Kraken, only attach to cupola?
+@new("ufk")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/UFK";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/UFK";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/UFK";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/UFK"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 40;
+    TransmissionSize: 4;
+    RequiresEVA: false;
+}
+
+// Karicebo Radio signal, needs commnet
+@new("karicebo")
+:experiments {
+	DisplayName: "KuriosityScience/Experiments/DisplayName/Karicebo";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Karicebo";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/Karicebo";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/Karicebo"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 40;
+    TransmissionSize: 4;
+    RequiresEVA: false;
+}
