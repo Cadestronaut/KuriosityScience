@@ -1,14 +1,14 @@
 {
   "spec": "2.0",
   "mod_id": "KuriosityScience",
-  "author": "Roly Cade",
+  "author": "Cadestronaut",
   "name": "Kuriosity Science",
-  "description": "Random occurrences of kurious science events!",
-  "source": "https://github.com/rolycade",
-  "version": "1.0.0",
-  "version_check": "https://github.com/rolycade",
+  "description": "Kurious events that inspire our kerbals to complete some science!",
+  "source": "https://github.com/Cadestronaut/KuriosityScience",
+  "version": "0.1.0",
+  "version_check": "https://github.com/Cadestronaut/KuriosityScience",
   "ksp2_version": {
-    "min": "0.2.0",
+    "min": "0.2.1",
     "max": "*"
   },
   "dependencies": [
