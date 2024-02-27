@@ -6,7 +6,7 @@
   "description": "Kurious events that inspire our kerbals to complete some science!",
   "source": "https://github.com/Cadestronaut/KuriosityScience",
   "version": "0.1.0",
-  "version_check": "https://github.com/Cadestronaut/KuriosityScience",
+  "version_check": "https://github.com/Cadestronaut/KuriosityScience/tree/master/plugin_template",
   "ksp2_version": {
     "min": "0.2.1",
     "max": "*"
