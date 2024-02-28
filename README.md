@@ -1,7 +1,7 @@
 # Kuriosity Science
 Kurious events that inspire our kerbals to complete some science!
 
-[SpaceDock](www.spacedock.com)
+[SpaceDock](https://spacedock.info/mod/3572/Kuriosity%20Science)
 
 ## Features
 - Generate completed science experiments from your kerbals whilst they're in flight
@@ -33,5 +33,5 @@ Kurious events that inspire our kerbals to complete some science!
 >	- First release
 
 ### About modding KSP2
-This has been my first experience modding a game, having been a fan of KSP & KSP2 since the early days. I had read a lot about some of the perceived challenges and barriers to modding KSP2 that some of the KSP community had expressed, and was curious to see for myself. Although the modding scene here is small, it's been able to (within ~15 hours) guide me to the point of creating the first version of this mod, by solely using the [SpaceWarp wiki](https://wiki.spacewarp.org/wiki/Main_Page), [Patch Manager wiki](https://pm.kerbal.wiki/), lurking  in the [KSP2 Modding Society Discord](https://discord.gg/hHW5gpHxfE), and looking through some of the excellent examples of mods that have already been created. I'd like to call out a few of the modders who's work here has inspired and taught me, even if they don't know it... *Cheese3660, Falki, Leonardfactory, Munix, Schlosrat, Safarte ...and many others*
+This has been my first experience modding a game, having been a fan of KSP & KSP2 since the early days. I had read a lot about some of the perceived challenges and barriers to modding KSP2 that some of the KSP community had expressed, and was curious to see for myself. Although the modding scene here is small, it's been able to (within ~15 hours) guide me to the point of creating the first version of this mod, by solely using the [SpaceWarp wiki](https://wiki.spacewarp.org/wiki/Main_Page), [Patch Manager wiki](https://pm.kerbal.wiki/), lurking  in the [KSP2 Modding Society Discord](https://discord.gg/hHW5gpHxfE), and looking through some of the excellent examples of mods that have already been created. I'd like to call out a few of the modders whose work here has inspired and taught me, even if they don't know it... *Cheese3660, Falki, Leonardfactory, Munix, Schlosrat, Safarte ...and many others*
 
