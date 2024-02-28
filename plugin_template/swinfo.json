@@ -5,8 +5,8 @@
   "name": "Kuriosity Science",
   "description": "Kurious events that inspire our kerbals to complete some science!",
   "source": "https://github.com/Cadestronaut/KuriosityScience",
-  "version": "0.1.0",
-  "version_check": "https://github.com/Cadestronaut/KuriosityScience/tree/master/plugin_template",
+  "version": "0.1.1",
+  "version_check": "https://github.com/Cadestronaut/KuriosityScience/tree/master/plugin_template/swinfo.json",
   "ksp2_version": {
     "min": "0.2.1",
     "max": "*"
@@ -16,6 +16,13 @@
       "id": "com.github.x606.spacewarp",
       "version": {
         "min": "1.8.0",
+        "max": "*"
+      }
+    },
+    {
+      "id": "PatchManager",
+      "version": {
+        "min": "0.9.4",
         "max": "*"
       }
     }

@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		KuriosityExperiments.md = KuriosityExperiments.md
 		plugin_template\patches\kuriosity_experiments.patch = plugin_template\patches\kuriosity_experiments.patch
 		README.md = README.md
+		plugin_template\swinfo.json = plugin_template\swinfo.json
 	EndProjectSection
 EndProject
 Global
