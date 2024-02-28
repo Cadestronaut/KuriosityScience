@@ -29,6 +29,9 @@ Kurious events that inspire our kerbals to complete some science!
 
 ## Changelog
 
+> v0.1.1
+>	- Minor bugfixes
+>
 > v0.1
 >	- First release
 
