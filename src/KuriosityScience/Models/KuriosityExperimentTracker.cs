@@ -21,7 +21,7 @@ public class KuriosityExperimentTracker
     // Constants
     private const double STDEV_PROPORTION_OF_MEAN = 3.0;
     private const double BASE_SCIENCE_MULTIPLIER = 1.0;
-    private const double SCIENCE_MULTIPLIER_SCALING_FACTOR = 0.5;
+    private const double SCIENCE_MULTIPLIER_SCALING_FACTOR = 0.3;
 
     // Useful objects
     private SessionManager _sessionManager;
@@ -45,7 +45,6 @@ public class KuriosityExperimentTracker
         {
             if (_experiment == null)
             {
-                //KuriositySciencePlugin.Logger.LogDebug($"Experiment loading: {ExperimentId}");
                 _experiment = KuriositySciencePlugin.KuriosityExperiments[ExperimentId];
             }
             return _experiment;
@@ -216,16 +215,14 @@ public class KuriosityExperimentTracker
 
         if(_sessionManager.TryGetMyAgencySubmittedResearchReports(out List<CompletedResearchReport> completedReports))
         {
-            return completedReports.Where(r => r.ExperimentID == experimentId).ToList();
+            if (completedReports == null)
+            {
+                return new List<CompletedResearchReport>();
+            }
+            return completedReports.Where(r => (r.ExperimentID == experimentId || r.ExperimentID == experimentId.Replace("kuriosity_experiment_",""))).ToList(); // TODO = remove this hack after a few versions (added in 0.1.2)
         }
 
         return new List<CompletedResearchReport>();
-
-        //KuriositySciencePlugin.Logger.LogDebug($"GetAllSubmittedReportsForExperiment result is {result}");
-
-        //if (completedReports == null) return new List<CompletedResearchReport>();
-
-        //return completedReports.Where(r => r.ExperimentID == experimentId).ToList();
     }
 
     /// <summary>
@@ -237,8 +234,6 @@ public class KuriosityExperimentTracker
     /// <returns>True if all conditions are valid</returns>
     private bool IsExperimentValid(VesselComponent vessel, Data_KuriosityScience dataKuriosityScience, Guid kerbalId)
     {
-        //KuriositySciencePlugin.Logger.LogDebug($"IsExperimentValid");
-
         bool hasValidExperimentResearchLocation = ValidExperimentResearchLocation(vessel);
         bool hasValidExperimentForPart = ValidExperimentForPart(dataKuriosityScience);
         bool hasValidThisExperimentNotCompleted = ValidThisExperimentNotCompleted(kerbalId);
@@ -250,7 +245,8 @@ public class KuriosityExperimentTracker
         bool hasValidAllowHomePlanet = ValidAllowHomePlanet(vessel);
         bool hasValidRequiresEVA = ValidRequiresEVA(vessel);
 
-        /*KuriositySciencePlugin.Logger.LogDebug($"Experiment: {Experiment.ExperimentId}\n" +
+        /*
+        KuriositySciencePlugin.Logger.LogDebug($"Experiment: {Experiment.ExperimentId}\n" +
             $"  Location:                   {hasValidExperimentResearchLocation}\n" +
             $"  Part:                       {hasValidExperimentForPart}\n" +
             $"  Experiment not completed:   {hasValidThisExperimentNotCompleted}\n" +
@@ -273,16 +269,6 @@ public class KuriosityExperimentTracker
             && hasValidCommNetState
             && hasValidAllowHomePlanet
             && hasValidRequiresEVA
-            //ValidExperimentResearchLocation(vessel)
-            //&& ValidExperimentForPart(dataKuriosityScience)
-            //&& ValidThisExperimentNotCompleted(kerbalId)
-            //&& ValidAdditionalCrewRequirement(vessel)
-            //&& ValidProbeCoreRequirement(vessel)
-            //&& ValidTechRequirement()
-            //&& ValidExperimentCompleted(kerbalId)
-            //&& ValidCommNetState(vessel)
-            //&& ValidAllowHomePlanet(vessel)
-            //&& ValidRequiresEVA(vessel)
             );
     }
 
@@ -294,23 +280,25 @@ public class KuriosityExperimentTracker
     /// <param name="kerbalId">this kerbal</param>
     public void UpdateExperimentPrecedence(VesselComponent vessel, Data_KuriosityScience dataKuriosityScience, Guid kerbalId)
     {
-        //KuriositySciencePlugin.Logger.LogDebug($"UpdateExperimentPrecedence");
-        if (!(State == KuriosityExperimentState.Completed
+        if(ExperimentPrecedence != KuriosityExperimentPrecedence.DePrioritized)
+        {
+            if (!(State == KuriosityExperimentState.Completed
             || State == KuriosityExperimentState.Uninitialized)
             && IsExperimentValid(vessel, dataKuriosityScience, kerbalId))
-        {
-            if (dataKuriosityScience.PartPriorityExperiments.Contains(Experiment.ExperimentId))
             {
-                ExperimentPrecedence = KuriosityExperimentPrecedence.Priority;
+                if (dataKuriosityScience.PartPriorityExperiments.Contains(Experiment.ExperimentId))
+                {
+                    ExperimentPrecedence = KuriosityExperimentPrecedence.Priority;
+                }
+                else
+                {
+                    ExperimentPrecedence = KuriosityExperimentPrecedence.NonPriority;
+                }
             }
             else
             {
-                ExperimentPrecedence = KuriosityExperimentPrecedence.NonPriority;
+                ExperimentPrecedence = KuriosityExperimentPrecedence.None;
             }
-        }
-        else
-        {
-            ExperimentPrecedence = KuriosityExperimentPrecedence.None;
         }
     }
 
@@ -336,7 +324,7 @@ public class KuriosityExperimentTracker
 
         if (experimentDefinition == null)
         {
-            KuriositySciencePlugin.Logger.LogError($"Experiment {Experiment.ExperimentId} ID not found. Cannot activate KuriosityExperiment class ");
+            KuriositySciencePlugin.Logger.LogError($"Experiment {Experiment.ExperimentId} ID not found. Cannot activate KuriosityExperiment class");
             return;
         }
 
@@ -345,9 +333,17 @@ public class KuriosityExperimentTracker
         if(Experiment.ApplyScienceMultiplier) multiplier *= (Math.Pow(Utility.CurrentScienceMultiplier(vessel),SCIENCE_MULTIPLIER_SCALING_FACTOR));
         Guid kerbalId = kerbal.Id;
 
+        string newExperimentId = CreateKuriosityReportID(Experiment.ExperimentId, kerbalId);
+
+        // Suffix the Id with how many reports we've already run, if experiment is rerunnable
+        if (Experiment.IsRerunnable)
+        {
+            newExperimentId = string.Format("{0}_{1}", newExperimentId, NumberOfCompletedResearchReports(newExperimentId));
+        }
+
         ExperimentDefinition newExperimentDefinition = new ExperimentDefinition()
         {
-            ExperimentID = CreateKuriosityReportID(Experiment.ExperimentId, kerbalId),
+            ExperimentID = newExperimentId,
             ExperimentType = experimentDefinition.ExperimentType,
             RequiresEVA = experimentDefinition.RequiresEVA,
             DataReportDisplayName = experimentDefinition.DataReportDisplayName,
@@ -362,18 +358,11 @@ public class KuriosityExperimentTracker
             TransmissionSize = experimentDefinition.TransmissionSize
         };
 
-        //Remove old Completed report if needed
-        if (Experiment.IsRerunnable)
-        {
-            RemoveCompletedResearchReports(newExperimentDefinition.ExperimentID);
-        }
-
         _scienceManager.ScienceExperimentsDataStore.AddExperimentDefinition(newExperimentDefinition);
         
         if (newExperimentDefinition.ExperimentType == ScienceExperimentType.DataType || newExperimentDefinition.ExperimentType == ScienceExperimentType.Both)
         {
             string flavorText = _scienceManager.ScienceExperimentsDataStore.GetFlavorText(newExperimentDefinition.ExperimentID, _moduleScienceExperiment._currentLocation.ResearchLocationId, ScienceReportType.DataType);
-            //KuriositySciencePlugin.Logger.LogDebug($"Report data flavor: {flavorText}");
             ResearchReport researchReport = new ResearchReport(newExperimentDefinition.ExperimentID, newExperimentDefinition.DataReportDisplayName, _moduleScienceExperiment._currentLocation, ScienceReportType.DataType, newExperimentDefinition.DataValue, flavorText);
             _moduleScienceExperiment._storageComponent.StoreResearchReport(researchReport);
         }
@@ -382,7 +371,6 @@ public class KuriosityExperimentTracker
         {
             //as of 0.2.1 GetFlavorText is currently bugged for returning 'default' Sample flavor descriptions, so need to add a default Data Flavor description for those experiments
             string flavorText2 = _scienceManager.ScienceExperimentsDataStore.GetFlavorText(newExperimentDefinition.ExperimentID, _moduleScienceExperiment._currentLocation.ResearchLocationId, ScienceReportType.SampleType);
-            //KuriositySciencePlugin.Logger.LogDebug($"Report sample flavor: {flavorText2}");
             ResearchReport researchReport2 = new ResearchReport(newExperimentDefinition.ExperimentID, newExperimentDefinition.SampleReportDisplayName, _moduleScienceExperiment._currentLocation, ScienceReportType.SampleType, newExperimentDefinition.SampleValue, flavorText2);
             _moduleScienceExperiment._storageComponent.StoreResearchReport(researchReport2);
         }
@@ -521,10 +509,14 @@ public class KuriosityExperimentTracker
     /// <returns></returns>
     private bool ValidTechRequirement()
     {
-        if(Experiment.TechRequired != string.Empty)
+        if (Experiment.TechRequired != null && Experiment.TechRequired.Count > 0)
         {
-            if(_scienceManager == null) _scienceManager = GameManager.Instance.Game.ScienceManager;
-            return _scienceManager.IsNodeUnlocked(Experiment.TechRequired);
+            if (_scienceManager == null) _scienceManager = GameManager.Instance.Game.ScienceManager;
+
+            foreach (string techToCheck in Experiment.TechRequired)
+            {
+                if (!_scienceManager.IsNodeUnlocked(techToCheck)) return false;
+            }
         }
 
         return true;
@@ -537,17 +529,12 @@ public class KuriosityExperimentTracker
     /// <returns></returns>
     private bool ValidOtherExperimentCompleted(Guid kerbalId)
     {
-        if(Experiment.KuriosityExperimentRequired != string.Empty)
+        if (Experiment.KuriosityExperimentRequired != null && Experiment.KuriosityExperimentRequired.Count > 0)
         {
-            if(GetAllSubmittedReportsForExperiment(CreateKuriosityReportID(Experiment.KuriosityExperimentRequired, kerbalId)).Count > 0)
+            foreach (string kuriosityExperimentToCheck in Experiment.KuriosityExperimentRequired)
             {
-                return true;
+                if (GetAllSubmittedReportsForExperiment(CreateKuriosityReportID(kuriosityExperimentToCheck, kerbalId)).Count == 0) return false;
             }
-            else
-            {
-                return false;
-            }
-
         }
 
         return true;
@@ -560,18 +547,25 @@ public class KuriosityExperimentTracker
     /// <returns></returns>
     private bool ValidCommNetState(VesselComponent vessel)
     {
-        if(Experiment.CommNetStateRequired != CommNetState.Any)
+        if (Experiment.CommNetStateRequired != CommNetState.Any)
         {
             TelemetryComponent telemetry = vessel.SimulationObject.Telemetry;
 
-            if (Experiment.CommNetStateRequired == CommNetState.Connected && telemetry.CommNetConnectionStatus == ConnectionNodeStatus.Connected)
+            if (telemetry != null)
             {
-                return true;
-            }
+                if (Experiment.CommNetStateRequired == CommNetState.Connected && telemetry.CommNetConnectionStatus == ConnectionNodeStatus.Connected)
+                {
+                    return true;
+                }
 
-            if(Experiment.CommNetStateRequired == CommNetState.Disconnected && telemetry.CommNetConnectionStatus != ConnectionNodeStatus.Connected)
+                if (Experiment.CommNetStateRequired == CommNetState.Disconnected && telemetry.CommNetConnectionStatus != ConnectionNodeStatus.Connected)
+                {
+                    return true;
+                }
+            }
+            else
             {
-                return true;
+                return true; 
             }
         }
         
@@ -589,7 +583,7 @@ public class KuriosityExperimentTracker
         {
             CelestialBodyComponent body = vessel.SimulationObject.CelestialBody;
 
-            if (body.isHomeWorld)
+            if (body == null || body.isHomeWorld)
             {
                 return false;
             }
@@ -618,20 +612,18 @@ public class KuriosityExperimentTracker
     }
 
     /// <summary>
-    ///     Removes any completed research report that matches the passed experiment Id
+    ///     Counts any completed research report that starts with the passed experiment Id.
     /// </summary>
     /// <param name="experimentId"></param>
-    /// <returns>True if any completed report was removed</returns>
-    private bool RemoveCompletedResearchReports(string experimentId)
+    /// <returns>The number of matching experiments</returns>
+    private int NumberOfCompletedResearchReports(string experimentId)
     {
         GameManager.Instance.Game.AgencyManager.TryGetMyAgencyEntry(out AgencyEntry agencyEntry);
         if (agencyEntry != null && agencyEntry.SubmittedResearchReports != null)
         {
-            //List<CompletedResearchReport> completedResearchReports = agencyEntry.SubmittedResearchReports.Where(r => r.ExperimentID == experimentId).ToList();
-
-            return (agencyEntry.SubmittedResearchReports.RemoveAll(r => r.ExperimentID == experimentId) > 0);
+            return agencyEntry.SubmittedResearchReports.Where(r => r.ExperimentID.StartsWith(experimentId)).Count();
         }
 
-        return false;
+        return 0;
     }
 }

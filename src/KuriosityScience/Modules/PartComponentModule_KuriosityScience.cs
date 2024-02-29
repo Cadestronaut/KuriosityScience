@@ -20,7 +20,21 @@ public class PartComponentModule_KuriosityScience : PartComponentModule
     private List<KerbalInfo> kerbalsInPart = [];
 
     // Constants
-    private const double KURIOSITY_FACTOR_SCALING_FACTOR = 0.5;
+    private const double KURIOSITY_FACTOR_SCALING_FACTOR = 0.3;
+
+    // Something I will remove soon...
+    private List<string> badIds = new List<string>
+        {
+            "space_sickness",
+            "bugs",
+            "mun_cheesecake",
+            "kedankenexperiment",
+            "ghost_in_the_machine",
+            "kabin_fever",
+            "micrometeor",
+            "ufk",
+            "karicebo"
+        };
 
     // This triggers when Flight scene is loaded. It triggers for active vessels also.
     public override void OnStart(double universalTime)
@@ -47,6 +61,9 @@ public class PartComponentModule_KuriosityScience : PartComponentModule
         // Load Kuriosity Experiments
         _dataKuriosityScience.KuriosityExperiments = KuriositySciencePlugin.KuriosityExperiments.Where(e => _dataKuriosityScience.AllowedKuriosityExperiments.Contains(e.Key)).Select(e => e.Value).ToList();
 
+        // Temporary cleaning out of older Ids
+        CleanOldExperimentIds();
+
         // refresh the list of kerbals in this part
         kerbalsInPart = _rosterManager.GetAllKerbalsInSimObject(Part.SimulationObject.GlobalId);
 
@@ -57,8 +74,6 @@ public class PartComponentModule_KuriosityScience : PartComponentModule
             //refresh all the controllers to check we're working on a valid / best experiment
             ControllerRefresh(kerbal);
         }
-
-        //KuriositySciencePlugin.Logger.LogDebug($"OnStart initializing message subscriptions");
 
         // Message listeners
         Game.Messages.Subscribe<KerbalLocationChanged>(OnKerbalLocationChanged);
@@ -91,12 +106,61 @@ public class PartComponentModule_KuriosityScience : PartComponentModule
             {
                 VesselComponent vessel = Part.PartOwner.SimulationObject.Vessel;
 
+                string completedExperimentId = controller.ActiveExperimentId;
+
                 // Experiment has completed, need to record it
                 controller.ActiveExperimentTracker.TriggerExperiment(kerbal, vessel);
+
+                DeprioritizeExperimentAcrossVessel(completedExperimentId, vessel, kerbal.Id);
 
                 controller.RefreshControllerExperimentStates(vessel, _dataKuriosityScience);
             }
         }
+    }
+
+    private void DeprioritizeExperimentAcrossVessel(string experimentId, VesselComponent vessel, Guid callingKerbalId)
+    {
+        if (string.IsNullOrEmpty(experimentId)) return;
+
+        foreach (Data_KuriosityScience dataKuriosityScience in GetAll_Data_KuriosityScience(vessel))
+        {
+            foreach (KuriosityController otherController in dataKuriosityScience.KuriosityControllers.Values)
+            {
+                if(otherController.KerbalId != callingKerbalId)
+                {
+                    foreach (KuriosityExperimentTracker tracker in otherController.ExperimentTrackers.Values)
+                    {
+                        if (tracker.ExperimentId == experimentId)
+                        {
+                            tracker.ExperimentPrecedence = KuriosityExperimentPrecedence.DePrioritized;
+                            KuriositySciencePlugin.Logger.LogDebug($"{experimentId} deprioritized for {otherController.KerbalId}");
+                            if (tracker.State == KuriosityExperimentState.Running) tracker.State = KuriosityExperimentState.Paused;
+                            if (otherController.ActiveExperimentId == tracker.ExperimentId) otherController.ActiveExperimentId = string.Empty;
+                        }
+                    }
+
+                    otherController.RefreshControllerExperimentStates(vessel, dataKuriosityScience);
+                }
+            }
+        }
+    }
+
+
+    private List<Data_KuriosityScience> GetAll_Data_KuriosityScience(VesselComponent vessel)
+    {
+        //TODO - Make this generic and add to my Utility class
+        List<Data_KuriosityScience> returnDataModules = new();
+
+        var parts = vessel.SimulationObject.PartOwner.Parts;
+        foreach (var part in parts)
+        {
+            if (part.TryGetModuleData<PartComponentModule_KuriosityScience, Data_KuriosityScience>(out var m))
+            {
+                returnDataModules.Add(m as Data_KuriosityScience);
+            }
+        }
+
+        return returnDataModules;
     }
 
     /// <summary>
@@ -268,11 +332,51 @@ public class PartComponentModule_KuriosityScience : PartComponentModule
         _dataKuriosityScience.BaseKuriosityFactor.SetValue(factor);
     }
 
+    private void CleanOldExperimentIds()
+    {
+        foreach (KuriosityController controller in _dataKuriosityScience.KuriosityControllers.Values)
+        {
+            // Update ActiveExperimentId
+            if (!string.IsNullOrEmpty(controller.ActiveExperimentId)) controller.ActiveExperimentId = UpdatedOldExperimentId(controller.ActiveExperimentId);
+
+            // Update ExperimentTracker keys
+            foreach (string badId in badIds)
+            {
+                if(controller.ExperimentTrackers.ContainsKey(badId))
+                {
+                    controller.ExperimentTrackers.Add(UpdatedOldExperimentId(badId), controller.ExperimentTrackers[badId]);
+                    controller.ExperimentTrackers.Remove(badId);
+                }
+            }
+
+            // Update ExperimentTracker experimentIds
+            foreach (KuriosityExperimentTracker tracker in controller.ExperimentTrackers.Values)
+            {
+                tracker.ExperimentId = UpdatedOldExperimentId(tracker.ExperimentId);
+            }
+        }
+    }
+
+    private string UpdatedOldExperimentId(string experimentId)
+    {
+        // A bit hacky but it guarantees I only alter my own old Ids rather than any others        
+        if (badIds.Contains(experimentId))
+        {
+            KuriositySciencePlugin.Logger.LogDebug($"Fixing old Id: {experimentId}");
+            return "kuriosity_experiment_" + experimentId;
+        }
+
+        return experimentId;
+    }
+
     public override void OnShutdown()
     {
         KuriositySciencePlugin.Logger.LogDebug($"OnShutdown triggered. Vessel '{Part?.PartOwner?.SimulationObject?.Vessel?.Name ?? "n/a"}' ");
 
         Game.Messages.Unsubscribe<KerbalLocationChanged>(OnKerbalLocationChanged);
         Game.Messages.Unsubscribe<VesselSituationChangedMessage>(OnVesselScienceSituationChanged);
+        Game.Messages.Unsubscribe<VesselCommNetConnectionStatusChangedMessage>(OnVesselCommNetStatusChanged);
+        Game.Messages.Unsubscribe<VesselChangedMessage>(OnVesselChanged); //vesselSplit??
+        Game.Messages.Unsubscribe<KerbalRemovedFromRoster>(OnKerbalRemovedFromRoster);
     }
 }

@@ -3,9 +3,9 @@
 /// Due to a bug with KSP2 0.2.1 any SampleType experiment needs to have a default DataFlavorDescription as it uses that instead of the default SampleFlavorDescription
 
 // kerbal vomited in space
-@new("space_sickness")
+@new("kuriosity_experiment_space_sickness")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/SpaceSickness";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/SpaceSickness";
 	ExperimentType: "Both";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/SpaceSickness";
@@ -43,9 +43,9 @@
 }
 
 //stowaway bugs
-@new("bugs")
+@new("kuriosity_experiment_bugs")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/Bugs";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Bugs";
 	ExperimentType: "SampleType";
     SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/Bugs";
@@ -99,9 +99,9 @@
 }
 
 // a great recipe for cheesecake
-@new("mun_cheesecake")
+@new("kuriosity_experiment_mun_cheesecake")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/MunCheesecake";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/MunCheesecake";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/MunCheesecake";
@@ -137,9 +137,9 @@
 }
 
 // Kedankenexperiment, long time to run
-@new("kedankenexperiment")
+@new("kuriosity_experiment_kedankenexperiment")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/KedankenExperiment";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/KedankenExperiment";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/KedankenExperiment";
@@ -187,9 +187,9 @@
 }
 
 // Ghost in the machine, needs probe core
-@new("ghost_in_the_machine")
+@new("kuriosity_experiment_ghost_in_the_machine")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/GhostInTheMachine";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/GhostInTheMachine";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/GhostInTheMachine";
@@ -237,9 +237,9 @@
 }
 
 // Kabin fever, needs to be alone
-@new("kabin_fever")
+@new("kuriosity_experiment_kabin_fever")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/KabinFever";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/KabinFever";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/KabinFever";
@@ -269,9 +269,9 @@
 }
 
 // micrometeor
-@new("micrometeor")
+@new("kuriosity_experiment_micrometeor")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/MicroMeteor";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/MicroMeteor";
 	ExperimentType: "SampleType";
     SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/MicroMeteor";
@@ -290,18 +290,6 @@
     ValidLocations: [
         {
             BodyName: "",
-            ScienceSituation: "Landed",
-            RequiresRegion: false,
-            ScienceRegion: ""
-        },
-        {
-            BodyName: "",
-            ScienceSituation: "Splashed",
-            RequiresRegion: false,
-            ScienceRegion: ""
-        },
-        {
-            BodyName: "",
             ScienceSituation: "LowOrbit",
             RequiresRegion: false,
             ScienceRegion: ""
@@ -311,23 +299,17 @@
             ScienceSituation: "HighOrbit",
             RequiresRegion: false,
             ScienceRegion: ""
-        },
-        {
-            BodyName: "",
-            ScienceSituation: "Atmosphere",
-            RequiresRegion: false,
-            ScienceRegion: ""
         }
     ];
-    SampleValue: 200;
+    SampleValue: 80;
     TransmissionSize: 0;
     RequiresEVA: false;
 }
 
 // Unidentified Flying Kraken, only attach to cupola?
-@new("ufk")
+@new("kuriosity_experiment_ufk")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/UFK";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/UFK";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/UFK";
@@ -338,18 +320,6 @@
 		}
 	];
     ValidLocations: [
-        {
-            BodyName: "",
-            ScienceSituation: "Landed",
-            RequiresRegion: false,
-            ScienceRegion: ""
-        },
-        {
-            BodyName: "",
-            ScienceSituation: "Splashed",
-            RequiresRegion: false,
-            ScienceRegion: ""
-        },
         {
             BodyName: "",
             ScienceSituation: "LowOrbit",
@@ -375,9 +345,9 @@
 }
 
 // Karicebo Radio signal, needs commnet
-@new("karicebo")
+@new("kuriosity_experiment_karicebo")
 :experiments {
-	DisplayName: "KuriosityScience/Experiments/DisplayName/Karicebo";
+	DisplayName: "KuriosityScience/ModuleName";
 	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/Karicebo";
 	ExperimentType: "DataType";
 	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/Karicebo";
@@ -421,5 +391,273 @@
     ];
     DataValue: 40;
     TransmissionSize: 4;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_joolinspired")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/JoolInspired";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/JoolInspired";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/JoolInspired"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Jool",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Jool",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Jool",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 120;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_dunainspired")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/DunaInspired";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/DunaInspired";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/DunaInspired"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Duna",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Duna",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Duna",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 80;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_gillyinspired")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/GillyInspired";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/GillyInspired";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/GillyInspired"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Gilly",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Gilly",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 60;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_kerbolclose")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/KerbolClose";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/KerbolClose";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/KerbolClose"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Kerbol",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Kerbol",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 160;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_eelooalone")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/EelooAlone";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/EelooAlone";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/EelooAlone"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Eeloo",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Eeloo",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 140;
+    TransmissionSize: 12;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_minmuspartycake")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/MinmusPartyCake";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/MinmusPartyCake";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/MinmusPartyCake"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "Minmus",
+            ScienceSituation: "Landed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Minmus",
+            ScienceSituation: "Splashed",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "Minmus",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 80;
+    TransmissionSize: 8;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_anotheratmosphere")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/AnotherAtmosphere";
+	ExperimentType: "Both";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/AnotherAtmosphere";
+    SampleReportDisplayName: "KuriosityScience/Experiments/SampleReportDisplayName/AnotherAtmosphere";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/AnotherAtmosphere"
+		}
+	];
+    SampleFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/SampleFlavor/Default/AnotherAtmosphere"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "Atmosphere",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 40;
+    SampleValue: 120;
+    TransmissionSize: 4;
+    RequiresEVA: false;
+}
+
+@new("kuriosity_experiment_longtogether")
+:experiments {
+	DisplayName: "KuriosityScience/ModuleName";
+	DisplayRequirements: "KuriosityScience/Experiments/OabDescription/DisplayRequirements/LongTogether";
+	ExperimentType: "DataType";
+	DataReportDisplayName: "KuriosityScience/Experiments/DataReportDisplayName/LongTogether";
+	DataFlavorDescriptions: [
+		{
+			ResearchLocationID: "Default",
+			LocalizationTag: "KuriosityScience/Experiments/DataFlavor/Default/LongTogether"
+		}
+	];
+    ValidLocations: [
+        {
+            BodyName: "",
+            ScienceSituation: "LowOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        },
+        {
+            BodyName: "",
+            ScienceSituation: "HighOrbit",
+            RequiresRegion: false,
+            ScienceRegion: ""
+        }
+    ];
+    DataValue: 100;
+    TransmissionSize: 20;
     RequiresEVA: false;
 }

@@ -21,14 +21,22 @@ Kurious events that inspire our kerbals to complete some science!
 
 ## Kuriosity Experiments
 *Beware spoilers!*
->! [Experiments](KuriosityExperiments.md)
+> [Experiments](KuriosityExperiments.md)
 
 ## Planned Features
 - UI to review experiments that each kerbal is running or has completed
 - Updated localization
 
 ## Changelog
-
+> v0.1.2
+>	- Changed the condition of tech unlocked and kuriosity experiments completed to handle a list of items rather than a single item
+>	- Added a feature to deprioritize an experiment (i.e. not run it) for all kerbals on a vessel once one of them has completed an experiment onboard
+>	- Added 8 more experiments, and adjusted conditions and running duration for several existing experiments (attempting to balance)
+>	- Minor bugfixes
+>
+> v0.1.1
+>	- Minor bugfixes
+>
 > v0.1
 >	- First release
 

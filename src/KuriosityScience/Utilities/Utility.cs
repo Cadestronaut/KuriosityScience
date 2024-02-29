@@ -12,10 +12,6 @@ internal static class Utility
 
     //1 year is 9201600.0 seconds
 
-    public static List<CelestialBodyComponent> GetAllCelestialBodies() => GameManager.Instance.Game?.UniverseModel?.GetAllCelestialBodies();
-
-    public static List<string> GetAllCelestialBodyNames() => GetAllCelestialBodies().Select(body => body.Name).ToList();
-
     /// <summary>
     ///     Converts a time in seconds to a KSP formatted datetime string
     /// </summary>
@@ -74,6 +70,7 @@ internal static class Utility
         double u1 = 1.0 - rnd.NextDouble();
         double u2 = 1.0 - rnd.NextDouble();
         double rndStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+        if (Math.Sign(rndStdNormal) == -1) rndStdNormal *= -1; //found some odd instances where this was was less than 0 - hacky fix for now TODO - proper fix
         double rndNormal = mean + stdDev * rndStdNormal;
 
         return rndNormal;

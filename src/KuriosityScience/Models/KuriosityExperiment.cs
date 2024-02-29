@@ -32,10 +32,10 @@ public class KuriosityExperiment
     public bool RequiresProbeCore = false;
 
     [SerializeField]
-    public string TechRequired = string.Empty; 
+    public List<string> TechRequired = new();
 
     [SerializeField]
-    public string KuriosityExperimentRequired = string.Empty; 
+    public List<string> KuriosityExperimentRequired = new();
 
     [SerializeField]
     public CommNetState CommNetStateRequired = CommNetState.Any;
@@ -48,4 +48,7 @@ public class KuriosityExperiment
 
     [SerializeField]
     public bool ApplyScienceMultiplier = false;
+
+    [SerializeField]
+    public string ConditionsDescription = "";
 }   

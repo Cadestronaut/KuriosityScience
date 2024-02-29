@@ -13,6 +13,7 @@ public enum KuriosityExperimentPrecedence
 {
     Priority,
     NonPriority,
+    DePrioritized,
     None
 }
 

@@ -1,17 +1,6 @@
-﻿//Need to handle instances where the kerbal is destroyed whilst in a part (e.g. by a life support mod)    
-//Add some configuration options
-//try to discourage experiments that have already been completed by other kerbals they're with?
-//Add a check for ExperimentDefinition.RequiresEVA
-
-/* 
-
-     * -Build basic conditionals:
-     *      -HasProbeCore
-     *      -HasCommnet
-     *      -HasCupola
-     *      -HasMonopropellant(amount)
-     * -Build kuriosity factor adjustors
-     *      -VesselSizeFactor (mass??)
-     *      -CrewFactor (scientists are decent, others are marginal, no crew = 0)
-     *      -LabFactor
-     */
+﻿//Add some configuration options
+//remove research location/situation from stock experimentdefinition, and recreate in kuriosityexperimentdefinition
+//assign the actual location/situation when an experiment gets triggered & stored
+//update experiment IDs to prefix with kuriosity_science - and add handling to migrate games in progress to use that - DONE
+//start testing out some UI options
+//add conditionsdescription to each experiment to display in the ui (localized)

@@ -47,7 +47,6 @@ public class KuriosityController
     /// </summary>
     private List<KuriosityExperimentTracker> GetBestExperiments()
     {
-        //KuriositySciencePlugin.Logger.LogDebug($"GetBestExperiments");
         List<KuriosityExperimentPrecedence> precedences = new List<KuriosityExperimentPrecedence>
         {
             KuriosityExperimentPrecedence.Priority,
@@ -72,8 +71,6 @@ public class KuriosityController
                 }
             }
         }
-
-        //KuriositySciencePlugin.Logger.LogDebug($"No best experiments!");
         return null;
     }
 
@@ -83,8 +80,6 @@ public class KuriosityController
     /// <param name="currentKuriosityFactor">The current Kuriosity Factor that should be applied to the running experiment</param>
     public void UpdateActiveExperiment(double currentKuriosityFactor)
     {
-
-        //KuriositySciencePlugin.Logger.LogDebug($"UpdateActiveExperiment");
         string newActiveExperimentId;
 
         List<KuriosityExperimentTracker> bestExperiments = GetBestExperiments();
@@ -104,8 +99,9 @@ public class KuriosityController
             if (!string.IsNullOrEmpty(ActiveExperimentId) && ActiveExperimentTracker.State != KuriosityExperimentState.Completed)
             {
                 ActiveExperimentTracker.State = KuriosityExperimentState.Paused;
-
                 KuriositySciencePlugin.Logger.LogDebug($"Experiment paused: {ActiveExperimentId} TimeLeft: {Utility.ToDateTime(ActiveExperimentTracker.TimeLeft)}");
+
+                ActiveExperimentId = string.Empty;
             } else if (!string.IsNullOrEmpty(newActiveExperimentId))
             {
                 ActiveExperimentId = newActiveExperimentId;
@@ -120,8 +116,6 @@ public class KuriosityController
 
             }
         }
-
-        //KuriositySciencePlugin.Logger.LogDebug($"No Active experiment");
     }
 
     /// <summary>
@@ -143,7 +137,6 @@ public class KuriosityController
     /// <param name="dataKuriosityScience">Reference to the data of the calling part component module</param>
     public void UpdateExperimentPrecedences(VesselComponent vessel, Data_KuriosityScience dataKuriosityScience)
     {
-        //KuriositySciencePlugin.Logger.LogDebug($"UpdateExperimentPrecedences");
         foreach (KuriosityExperimentTracker experimentTracker in ExperimentTrackers.Values)
         {
             experimentTracker.UpdateExperimentPrecedence(vessel, dataKuriosityScience, KerbalId);

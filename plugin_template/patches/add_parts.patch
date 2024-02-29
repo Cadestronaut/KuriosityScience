@@ -2,95 +2,147 @@
 // Cupola is: pod_2v_cupola_crew
 
 
+
+// Catchall
 :parts (~#lab* ~#pod* ~#cockpit* ~#*cupola*) {
     @if $$crewCapacity > 0 {
         +Module_KuriosityScience {
             +Data_KuriosityScience {
                 PartKuriosityFactorAdjustment: 1.1;
                 AllowedKuriosityExperiments +: [
-                    "space_sickness",
-                    "bugs",
-                    "mun_cheesecake",
-                    "kedankenexperiment",
-                    "ghost_in_the_machine",
-                    "kabin_fever",
-                    "micrometeor",
-                    "karicebo"
+                    "kuriosity_experiment_space_sickness",
+                    "kuriosity_experiment_bugs",
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_kabin_fever",
+                    "kuriosity_experiment_micrometeor",
+                    "kuriosity_experiment_karicebo",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake",
+                    "kuriosity_experiment_anotheratmosphere",
+                    "kuriosity_experiment_longtogether"
                 ];
                 PartPriorityExperiments +: [
-                    "mun_cheesecake"
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake"
                 ];
             }
         }
     }
 }
 
-
+// Labs
 :parts #lab* {
     @if $$crewCapacity > 0 {
         +Module_KuriosityScience {
             +Data_KuriosityScience {
                 PartKuriosityFactorAdjustment: 1.6;
                 AllowedKuriosityExperiments +: [
-                    "space_sickness",
-                    "bugs",
-                    "mun_cheesecake",
-                    "kedankenexperiment",
-                    "ghost_in_the_machine",
-                    "kabin_fever",
-                    "micrometeor",
-                    "karicebo"
+                    "kuriosity_experiment_space_sickness",
+                    "kuriosity_experiment_bugs",
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_kedankenexperiment",
+                    "kuriosity_experiment_kabin_fever",
+                    "kuriosity_experiment_micrometeor",
+                    "kuriosity_experiment_karicebo",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake",
+                    "kuriosity_experiment_longtogether"
                 ];
                 PartPriorityExperiments +: [
-                    "mun_cheesecake"
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake"
                 ];
             }
         }
     }
 }
 
+// Pods & Cockpits
 :parts (#pod*, #cockpit*) ~#*cupola*  {
     @if $$crewCapacity > 0 {
         +Module_KuriosityScience {
             +Data_KuriosityScience {
                 PartKuriosityFactorAdjustment: 0.6;
                 AllowedKuriosityExperiments +: [
-                    "space_sickness",
-                    "bugs",
-                    "mun_cheesecake",
-                    "kedankenexperiment",
-                    "ghost_in_the_machine",
-                    "kabin_fever",
-                    "micrometeor",
-                    "karicebo"
+                    "kuriosity_experiment_space_sickness",
+                    "kuriosity_experiment_bugs",
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_ghost_in_the_machine",
+                    "kuriosity_experiment_kabin_fever",
+                    "kuriosity_experiment_micrometeor",
+                    "kuriosity_experiment_karicebo",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake",
+                    "kuriosity_experiment_anotheratmosphere",
+                    "kuriosity_experiment_longtogether"
                 ];
                 PartPriorityExperiments +: [
-                    "mun_cheesecake"
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake",
+                    "kuriosity_experiment_anotheratmosphere"
                 ];
             }
         }
     }
 }
 
+// Cupolas
 :parts #*cupola* {
     @if $$crewCapacity > 0 {
         +Module_KuriosityScience {
             +Data_KuriosityScience {
                 PartKuriosityFactorAdjustment: 1.2;
                 AllowedKuriosityExperiments +: [
-                    "space_sickness",
-                    "bugs",
-                    "mun_cheesecake",
-                    "kedankenexperiment",
-                    "ghost_in_the_machine",
-                    "kabin_fever",
-                    "micrometeor",
-                    "karicebo",
-                    "ufk"
+                    "kuriosity_experiment_space_sickness",
+                    "kuriosity_experiment_bugs",
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_micrometeor",
+                    "kuriosity_experiment_karicebo",
+                    "kuriosity_experiment_ufk",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake",
+                    "kuriosity_experiment_longtogether"
                 ];
                 PartPriorityExperiments +: [
-                    "mun_cheesecake",
-                    "ufk"
+                    "kuriosity_experiment_mun_cheesecake",
+                    "kuriosity_experiment_ufk",
+                    "kuriosity_experiment_joolinspired",
+                    "kuriosity_experiment_dunainspired",
+                    "kuriosity_experiment_gillyinspired",
+                    "kuriosity_experiment_kerbolclose",
+                    "kuriosity_experiment_eelooalone",
+                    "kuriosity_experiment_minmuspartycake"
                 ];
             }
         }
