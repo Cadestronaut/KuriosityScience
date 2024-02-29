@@ -32,7 +32,7 @@ Kurious events that inspire our kerbals to complete some science!
 >	- Changed the condition of tech unlocked and kuriosity experiments completed to handle a list of items rather than a single item
 >	- Added a feature to deprioritize an experiment (i.e. not run it) for all kerbals on a vessel once one of them has completed an experiment onboard
 >	- Added 8 more experiments, and adjusted conditions and running duration for several existing experiments (attempting to balance)
->	- Minor bugfixes
+>	- Minor bugfixes 
 >
 > v0.1.1
 >	- Minor bugfixes
