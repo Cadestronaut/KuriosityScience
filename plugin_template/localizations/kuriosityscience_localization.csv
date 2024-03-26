@@ -1,46 +1,46 @@
-﻿Key,Type,Desc,English
+﻿Key,Type,Desc,English,Russian
 ,,,
-KuriosityScience/ModuleName,Text,Module Name,Kuriosity Science
-KuriosityScience/OAB/Description,Text,,Random Science Events!
-KuriosityScience/OAB/PartSettings,Text,,Part Settings
-KuriosityScience/OAB/KuriosityFactorAdjustment,Text,,Kuriosity Factor Adjustment
-KuriosityScience/Notifications/ExperimentTriggered,Text,,{0} has made a kurious discovery!
-KuriosityScience/PartModules/KuriosityFactor,Text,,Kuriosity Factor
-KuriosityScience/Experiments/DataReportDisplayName/SpaceSickness,Text,Data Report Title,Space Sickness
-KuriosityScience/Experiments/DataFlavor/Default/SpaceSickness,Text,Data Report Details,The nausea has inspired a breakthrough in our understanding of gravity
-KuriosityScience/Experiments/SampleReportDisplayName/SpaceSickness,Text,Sample Report Title,Vomit Sample
-KuriosityScience/Experiments/SampleFlavor/Default/SpaceSickness,Text,Sample Report Details,It's disgusting and quite chunky…
-KuriosityScience/Experiments/SampleReportDisplayName/Bugs,Text,Sample Report Title,Bugs!
-KuriosityScience/Experiments/SampleFlavor/Default/Bugs,Text,Sample Report Details,"It's a little bug with thousands of legs, that was found crawling over an instrument panel!"
-KuriosityScience/Experiments/DataReportDisplayName/MunCheesecake,Text,Data Report Title,Cheesecake Recipe
-KuriosityScience/Experiments/DataFlavor/Default/MunCheesecake,Text,Data Report Details,"Inspired by the Mun, it's a new twist on a classic Cheesecake"
-KuriosityScience/Experiments/DataReportDisplayName/KedankenExperiment,Text,Data Report Title,Kedankenexperiment
-KuriosityScience/Experiments/DataFlavor/Default/KedankenExperiment,Text,Data Report Details,The result of hours of deep though has created a breakthrough in our understanding of the universe
-KuriosityScience/Experiments/DataReportDisplayName/GhostInTheMachine,Text,Data Report Title,Ghost in the Machine
-KuriosityScience/Experiments/DataFlavor/Default/GhostInTheMachine,Text,Data Report Details,A strange set of responses from the ship's computer warrant further investigation
-KuriosityScience/Experiments/DataReportDisplayName/KabinFever,Text,Data Report Title,Kabin Fever
-KuriosityScience/Experiments/DataFlavor/Default/KabinFever,Text,Data Report Details,"Driven by isolation, we have expanded our understanding around the so called 'social sciences'"
-KuriosityScience/Experiments/SampleReportDisplayName/MicroMeteor,Text,Sample Report Title,MicroMeteor
-KuriosityScience/Experiments/SampleFlavor/Default/MicroMeteor,Text,Sample Report Details,A small piece of space rock that miraculously sealed the very hole it created whilst impacting at several kilometers per second
-KuriosityScience/Experiments/DataReportDisplayName/UFK,Text,Data Report Title,Unidentified Flying Kraken
-KuriosityScience/Experiments/DataFlavor/Default/UFK,Text,Data Report Details,A particularily grainy picture of what appears to be a weather balloon
-KuriosityScience/Experiments/DataReportDisplayName/Karicebo,Text,Data Report Title,Karicebo Radio Signal
-KuriosityScience/Experiments/DataFlavor/Default/Karicebo,Text,Data Report Details,"A background signal on our CommNet has revealed the possiblity of extraterrestial life, along with a little picture of a strange alien!"
-KuriosityScience/Experiments/DataReportDisplayName/JoolInspired,Text,Data Report Title,Inspired by Jool!
-KuriosityScience/Experiments/DataFlavor/Default/JoolInspired,Text,Data Report Details,"Instructions for a new beach game created by the crew, after being inspired by a mysterious giant green ball"
-KuriosityScience/Experiments/DataReportDisplayName/DunaInspired,Text,Data Report Title,Inspired by Duna!
-KuriosityScience/Experiments/DataFlavor/Default/DunaInspired,Text,Data Report Details,An observational analysis of the dust storms on this strage red planet
-KuriosityScience/Experiments/DataReportDisplayName/GillyInspired,Text,Data Report Title,Inspired by Gilly!
-KuriosityScience/Experiments/DataFlavor/Default/GillyInspired,Text,Data Report Details,Designs for a special handkerchief that stops even the tiniest momentum caused by sneezing knocking us into an escape trajectory
-KuriosityScience/Experiments/DataReportDisplayName/KerbolClose,Text,Data Report Title,Sizzling Hot
-KuriosityScience/Experiments/DataFlavor/Default/KerbolClose,Text,Data Report Details,The extreme heat has taught us new ways to cook an egg on the hull of the ship! Mmmmm tasty!
-KuriosityScience/Experiments/DataReportDisplayName/EelooAlone,Text,Data Report Title,Hallucinations
-KuriosityScience/Experiments/DataFlavor/Default/EelooAlone,Text,Data Report Details,"A hastily written description of strange visions seen whilst dreaming, alone on a distant planet"
-KuriosityScience/Experiments/DataReportDisplayName/MinmusPartyCake,Text,Data Report Title,What a Party!
-KuriosityScience/Experiments/DataFlavor/Default/MinmusPartyCake,Text,Data Report Details,"Deciding to throw a little party, the crew tried to improve on the Mun Cheesecake reciepe, and this is the new improved recipe"
-KuriosityScience/Experiments/DataReportDisplayName/AnotherAtmosphere,Text,Data Report Title,Shimmering Atmosphere
-KuriosityScience/Experiments/DataFlavor/Default/AnotherAtmosphere,Text,Data Report Details,A detailed account of strange flicking lights and mild luminence in this alien atmosphere
-KuriosityScience/Experiments/SampleReportDisplayName/AnotherAtmosphere,Text,Sample Report Title,Strange Dust
-KuriosityScience/Experiments/SampleFlavor/Default/AnotherAtmosphere,Text,Sample Report Details,A small sample of shiny dust that seems to flicker and occasionally glow
-KuriosityScience/Experiments/DataReportDisplayName/LongTogether,Text,Data Report Title,Companionship
-KuriosityScience/Experiments/DataFlavor/Default/LongTogether,Text,Data Report Details,"A treatise on the enduring companionship of crew in deep space, very enlightening!"
+KuriosityScience/ModuleName,Text,Module Name,Kuriosity Science,Kuriosity Science
+KuriosityScience/OAB/Description,Text,,Random Science Events!,Случайные научные события!
+KuriosityScience/OAB/PartSettings,Text,,Part Settings,Детальные настройки
+KuriosityScience/OAB/KuriosityFactorAdjustment,Text,,Kuriosity Factor Adjustment,Корректировка коэффициентов
+KuriosityScience/Notifications/ExperimentTriggered,Text,,{0} has made a kurious discovery!,{0} сделал(а) любопытное открытие!
+KuriosityScience/PartModules/KuriosityFactor,Text,,Kuriosity Factor,Kuriosity Множитель
+KuriosityScience/Experiments/DataReportDisplayName/SpaceSickness,Text,Data Report Title,Space Sickness,Космическая болезнь
+KuriosityScience/Experiments/DataFlavor/Default/SpaceSickness,Text,Data Report Details,The nausea has inspired a breakthrough in our understanding of gravity,Тошнота вдохновила на прорыв в нашем понимании силы тяжести
+KuriosityScience/Experiments/SampleReportDisplayName/SpaceSickness,Text,Sample Report Title,Vomit Sample,Образец рвотной массы
+KuriosityScience/Experiments/SampleFlavor/Default/SpaceSickness,Text,Sample Report Details,It's disgusting and quite chunky…,Это отвратительно и довольно жирно…
+KuriosityScience/Experiments/SampleReportDisplayName/Bugs,Text,Sample Report Title,Bugs!,Баги!
+KuriosityScience/Experiments/SampleFlavor/Default/Bugs,Text,Sample Report Details,"It's a little bug with thousands of legs, that was found crawling over an instrument panel!","Это маленький жучок с тысячами ножек, который был найден ползающим по приборной панели!"
+KuriosityScience/Experiments/DataReportDisplayName/MunCheesecake,Text,Data Report Title,Cheesecake Recipe,Рецепт чизкейка
+KuriosityScience/Experiments/DataFlavor/Default/MunCheesecake,Text,Data Report Details,"Inspired by the Mun, it's a new twist on a classic Cheesecake","Вдохновивший Муной, нашел(-ла) новый подход к классическому чизкейку"
+KuriosityScience/Experiments/DataReportDisplayName/KedankenExperiment,Text,Data Report Title,Kedankenexperiment,Санбой-эксперемент
+KuriosityScience/Experiments/DataFlavor/Default/KedankenExperiment,Text,Data Report Details,The result of hours of deep though has created a breakthrough in our understanding of the universe,Результатом многочасовых глубоких размышлений стал прорыв в нашем понимании Вселенной
+KuriosityScience/Experiments/DataReportDisplayName/GhostInTheMachine,Text,Data Report Title,Ghost in the Machine,Призрак в машине
+KuriosityScience/Experiments/DataFlavor/Default/GhostInTheMachine,Text,Data Report Details,A strange set of responses from the ship's computer warrant further investigation,Странные сообщения корабельного компьютера требуют дальнейшего расследования
+KuriosityScience/Experiments/DataReportDisplayName/KabinFever,Text,Data Report Title,Kabin Fever,Каютная лихорадка
+KuriosityScience/Experiments/DataFlavor/Default/KabinFever,Text,Data Report Details,"Driven by isolation, we have expanded our understanding around the so called 'social sciences'","Находясь в изоляции, мы расширили наше понимание так называемых ""социальных наук"""
+KuriosityScience/Experiments/SampleReportDisplayName/MicroMeteor,Text,Sample Report Title,MicroMeteor,МикроМетеор
+KuriosityScience/Experiments/SampleFlavor/Default/MicroMeteor,Text,Sample Report Details,A small piece of space rock that miraculously sealed the very hole it created whilst impacting at several kilometers per second,"Маленький кусочек космического камня, который чудесным образом запечатал ту самую дыру, которую он создал, при ударе со скоростью несколько километров в секунду"
+KuriosityScience/Experiments/DataReportDisplayName/UFK,Text,Data Report Title,Unidentified Flying Kraken,Неопознанный летающий кракен
+KuriosityScience/Experiments/DataFlavor/Default/UFK,Text,Data Report Details,A particularily grainy picture of what appears to be a weather balloon,"Очень зернистое изображение того, что похоже на метеозонд"
+KuriosityScience/Experiments/DataReportDisplayName/Karicebo,Text,Data Report Title,Karicebo Radio Signal,Karicebo радио сигнал
+KuriosityScience/Experiments/DataFlavor/Default/Karicebo,Text,Data Report Details,"A background signal on our CommNet has revealed the possiblity of extraterrestial life, along with a little picture of a strange alien!","Фоновый сигнал в CommNet показал возможность существования внеземной жизни, а также небольшую фотографию странного инопланетянина!"
+KuriosityScience/Experiments/DataReportDisplayName/JoolInspired,Text,Data Report Title,Inspired by Jool!,Вдохновленный Джул!
+KuriosityScience/Experiments/DataFlavor/Default/JoolInspired,Text,Data Report Details,"Instructions for a new beach game created by the crew, after being inspired by a mysterious giant green ball","Инструкция к новой пляжной игре, созданной командой, вдохновленной таинственным гигантским зеленым шаром"
+KuriosityScience/Experiments/DataReportDisplayName/DunaInspired,Text,Data Report Title,Inspired by Duna!,Вдохновленный Дюной!
+KuriosityScience/Experiments/DataFlavor/Default/DunaInspired,Text,Data Report Details,An observational analysis of the dust storms on this strage red planet,Наблюдательный анализ пыльных бурь на этой странной красной планете
+KuriosityScience/Experiments/DataReportDisplayName/GillyInspired,Text,Data Report Title,Inspired by Gilly!,Вдохновленный Илой!
+KuriosityScience/Experiments/DataFlavor/Default/GillyInspired,Text,Data Report Details,Designs for a special handkerchief that stops even the tiniest momentum caused by sneezing knocking us into an escape trajectory,"Разрабатывает специальный носовой платок, который останавливает даже малейший импульс, который вызывает чихание, тем самым сбивая нас с траектории выхода из поля тяготения "
+KuriosityScience/Experiments/DataReportDisplayName/KerbolClose,Text,Data Report Title,Sizzling Hot,Обжигающе горячий
+KuriosityScience/Experiments/DataFlavor/Default/KerbolClose,Text,Data Report Details,The extreme heat has taught us new ways to cook an egg on the hull of the ship! Mmmmm tasty!,Экстремальная жара научила нас новым способам приготовления яиц на корпусе корабля! Ммммм вкусно!
+KuriosityScience/Experiments/DataReportDisplayName/EelooAlone,Text,Data Report Title,Hallucinations,Галлюцинации
+KuriosityScience/Experiments/DataFlavor/Default/EelooAlone,Text,Data Report Details,"A hastily written description of strange visions seen whilst dreaming, alone on a distant planet","Поспешно написанное описание странных видений, увиденных во сне в одиночестве на далекой планете"
+KuriosityScience/Experiments/DataReportDisplayName/MinmusPartyCake,Text,Data Report Title,What a Party!,Что за вечеринка!
+KuriosityScience/Experiments/DataFlavor/Default/MinmusPartyCake,Text,Data Report Details,"Deciding to throw a little party, the crew tried to improve on the Mun Cheesecake reciepe, and this is the new improved recipe","Решив устроить небольшую вечеринку, команда попыталась усовершенствовать рецепт чизкейка ""Мун"", и это будет новый улучшенный рецепт"
+KuriosityScience/Experiments/DataReportDisplayName/AnotherAtmosphere,Text,Data Report Title,Shimmering Atmosphere,Мерцающая атмосфера
+KuriosityScience/Experiments/DataFlavor/Default/AnotherAtmosphere,Text,Data Report Details,A detailed account of strange flicking lights and mild luminence in this alien atmosphere,Подробный отчет о странных мерцающих огнях и мягком свечении в этой чуждой атмосфере
+KuriosityScience/Experiments/SampleReportDisplayName/AnotherAtmosphere,Text,Sample Report Title,Strange Dust,Странная пыль
+KuriosityScience/Experiments/SampleFlavor/Default/AnotherAtmosphere,Text,Sample Report Details,A small sample of shiny dust that seems to flicker and occasionally glow,"Небольшой образец блестящей пыли, которая, кажется, мерцает и иногда светится"
+KuriosityScience/Experiments/DataReportDisplayName/LongTogether,Text,Data Report Title,Companionship,Дружеские отношения
+KuriosityScience/Experiments/DataFlavor/Default/LongTogether,Text,Data Report Details,"A treatise on the enduring companionship of crew in deep space, very enlightening!","Трактат о прочном товариществе экипажа в глубоком космосе, очень поучительный!"
