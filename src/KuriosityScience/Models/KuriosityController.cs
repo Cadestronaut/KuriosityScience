@@ -43,35 +43,64 @@ public class KuriosityController
     public Dictionary<string, KuriosityExperimentTracker> ExperimentTrackers = new();
 
     /// <summary>
-    ///     Create a list of best experiments for this kerbal to run, based on Validity -> Priority/Non-Priority -> Running, Paused, then Initialized
+    ///     Select the best experiment to be running based on priority and state.
     /// </summary>
-    private List<KuriosityExperimentTracker> GetBestExperiments()
+    private string ChooseNextExperimentId()
     {
-        List<KuriosityExperimentPrecedence> precedences = new List<KuriosityExperimentPrecedence>
-        {
-            KuriosityExperimentPrecedence.Priority,
-            KuriosityExperimentPrecedence.NonPriority
-        };
+        if (ExperimentTrackers.Count == 0)
+            return string.Empty;
 
-        List<KuriosityExperimentState> states = new List<KuriosityExperimentState>
-        {
-            KuriosityExperimentState.Running,
-            KuriosityExperimentState.Paused,
-            KuriosityExperimentState.Initialized
-        };
+        // Use a Span to access the value list without allocations.
+        Span<KuriosityExperimentTracker> experiments = ExperimentTrackers.Values.ToArray();
 
-        foreach (KuriosityExperimentPrecedence precedence in precedences)
+        // Capture the id and fitness of the first element, then we can compare all others
+        // against it.
+        string bestId = experiments[0].ExperimentId;
+        int bestFit   = experiments[0].Fitness();
+
+        // Count how many experiments match each fitness value, which means that experiments[0]
+        // will match, so before we start the loop the count needs to be zero, whereas inside
+        // the loop we set it to 1 on first encounter with a better fitness.
+        int fitCount  = 0;
+
+        foreach (var experiment in experiments)
         {
-            foreach (KuriosityExperimentState state in states)
+            var fitness = experiment.Fitness();
+            if (fitness > bestFit)
             {
-                List<KuriosityExperimentTracker> bestExperiments = ExperimentTrackers.Values.Where(e => e.ExperimentPrecedence == precedence && e.State == state).ToList();
-                if (bestExperiments.Count > 0)
-                {
-                    return bestExperiments;
-                }
+                // This experiment has a higher fitness than the previous candidate, so switch to it.
+                bestId = experiment.ExperimentId;
+                bestFit = fitness;
+                fitCount = 1;
+            }
+            else if (fitness == bestFit)
+            {
+                fitCount++;
             }
         }
-        return null;
+
+        // No matches.
+        if (bestFit < 0)
+            return string.Empty;
+
+        // If there was one or less matches, we can return whatever bestId contains
+        if (fitCount <= 1)
+            return bestId;
+
+        // Reaching this point should be infrequent based on when a new experiment actually needs
+        // selecting, in which case we can pick a random number between 0,fitCount then revisit the
+        // experiment tracker and count down to that random index.
+        Random rng = new Random();
+        int pickCountdown = rng.Next(bestFit) + 1;
+        foreach (var experiment in experiments)
+        {
+            var fitness = experiment.Fitness();
+            if (fitness >= bestFit && --pickCountdown <= 0)
+                return experiment.ExperimentId;
+        }
+
+        // Fallback: return the last matched ExperimentID
+        return bestId;
     }
 
     /// <summary>
@@ -80,20 +109,7 @@ public class KuriosityController
     /// <param name="currentKuriosityFactor">The current Kuriosity Factor that should be applied to the running experiment</param>
     public void UpdateActiveExperiment(double currentKuriosityFactor)
     {
-        string newActiveExperimentId;
-
-        List<KuriosityExperimentTracker> bestExperiments = GetBestExperiments();
-        if (bestExperiments == null)
-        {
-            newActiveExperimentId = string.Empty;
-        }
-        else
-        {
-            Random rnd = new Random();
-            int index = rnd.Next(bestExperiments.Count);
-            newActiveExperimentId = bestExperiments[index].Experiment.ExperimentId;
-        }
-
+        string newActiveExperimentId = ChooseNextExperimentId();
         if (string.IsNullOrEmpty(ActiveExperimentId) || newActiveExperimentId != ActiveExperimentId)
         {
             if (!string.IsNullOrEmpty(ActiveExperimentId) && ActiveExperimentTracker.State != KuriosityExperimentState.Completed)
