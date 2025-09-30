@@ -62,6 +62,29 @@ public class KuriosityExperimentTracker
         get { return _timeLeft / CurrentKuriosityFactor; }
     }
 
+    // <summary>
+    // Calculate a 'fitness' score for an experiment based on its precedence and state,
+    // so that we can sort/filter experiments based on their suitability to run next.
+    // A fitness below 0 indicates the experiment is not in a runnable state.
+    // </summary>
+    public int Fitness()
+    {
+        int score = -1;
+        // Set a positive score based on how far the experiment has progressed, so that
+        // we will prefer selecting the currently Running experiment, followed by a
+        // running-but-paused experiment before reaching for an initialized-but-not-run.
+        switch (State)
+        {
+            case KuriosityExperimentState.Running: score = 2; break;
+            case KuriosityExperimentState.Paused: score = 1; break;
+            case KuriosityExperimentState.Initialized: score = 0; break;
+        }
+        // Bump the score of priority experiments.
+        if (score >= 0 && ExperimentPrecedence == KuriosityExperimentPrecedence.Priority)
+            score += 10;
+        return score;
+    }
+
     [SerializeField]
     [Tooltip("KuriosityScience Experiment run state")]
     public KuriosityExperimentState State;
@@ -191,38 +214,31 @@ public class KuriosityExperimentTracker
     {
         if (Experiment.IsRerunnable) return true;
 
-        if(GetAllSubmittedReportsForExperiment(CreateKuriosityReportID(Experiment.ExperimentId, kerbalId)).Count > 0)
-        {
-            return false;
-        } else
-        {
-            return true;
-        }
+        return !HasSubmittedReportsForExperiment(CreateKuriosityReportID(Experiment.ExperimentId, kerbalId));
     }
 
     /// <summary>
-    ///     Returns all completed science reports for this experiment Id
+    ///   Returns true if there have been reports submitted for this experiment id.
     /// </summary>
-    /// <param name="experimentId">the experiment Id to match</param>
-    /// <returns>List of completed science reports</returns>
-    private List<CompletedResearchReport> GetAllSubmittedReportsForExperiment(string experimentId)
+    private bool HasSubmittedReportsForExperiment(string experimentId)
     {
-        //KuriositySciencePlugin.Logger.LogDebug($"GetAllSubmittedReportsForExperiment: {experimentId}");
-        if (_sessionManager == null)
-        {
-            _sessionManager = GameManager.Instance.Game.SessionManager;
-        }
+        _sessionManager ??= GameManager.Instance.Game.SessionManager;
 
-        if(_sessionManager.TryGetMyAgencySubmittedResearchReports(out List<CompletedResearchReport> completedReports))
+        /// TODO: Remove this - it supports old experiment IDs.
+        string oldExperimentId = experimentId.Substring("kuriosity_experiment_".Length);
+
+        if (_sessionManager.TryGetAgencySubmittedResearchReports(out List<CompletedResearchReport> completedReports))
         {
-            if (completedReports == null)
+            foreach (var report in completedReports)
             {
-                return new List<CompletedResearchReport>();
+                if (report.ExperimentId == experimentId)
+                    return true;
+                if (report.ExperimentId == oldExperimentId)     /// TODO: Remove per above
+                    return true;                                /// TODO: Remove per above
             }
-            return completedReports.Where(r => (r.ExperimentID == experimentId || r.ExperimentID == experimentId.Replace("kuriosity_experiment_",""))).ToList(); // TODO = remove this hack after a few versions (added in 0.1.2)
         }
 
-        return new List<CompletedResearchReport>();
+        return false;
     }
 
     /// <summary>
@@ -490,17 +506,21 @@ public class KuriosityExperimentTracker
     /// <returns></returns>
     private bool ValidProbeCoreRequirement(VesselComponent vessel)
     {
-        if(Experiment.RequiresProbeCore)
-        {
-            foreach(Data_Command dataCommand in GetAll_Data_Command(vessel))
-            {
-                if (dataCommand.minimumCrew == 0) return true;
-            }
+        if (!Experiment.RequiresProbeCore)
+            return true;
 
-            return false;
+        var parts = vessel.SimulationObject.PartOwner.Parts;
+        foreach (var part in parts)
+        {
+            if (part.TryGetModuleData<PartComponentModule_Command, Data_Command>(out var m))
+            {
+                var dataCommand = m as Data_Command;
+                if (dataCommand.minimumCrew == 0)
+                    return true;
+            }
         }
 
-        return true;
+        return false;
     }
 
     /// <summary>
@@ -529,15 +549,28 @@ public class KuriosityExperimentTracker
     /// <returns></returns>
     private bool ValidOtherExperimentCompleted(Guid kerbalId)
     {
-        if (Experiment.KuriosityExperimentRequired != null && Experiment.KuriosityExperimentRequired.Count > 0)
+        if (Experiment.KuriosityExperimentRequired == null || Experiment.KuriosityExperimentRequired.Count == 0)
+            return true;
+
+        // Getting the list of experiment reports might be expensive, so do it once and then compare each report against
+        // our list.
+
+        if (_sessionManager.TryGetAgencySubmittedResearchReports(out List<CompletedResearchReport> completedReports))
         {
             foreach (string kuriosityExperimentToCheck in Experiment.KuriosityExperimentRequired)
             {
-                if (GetAllSubmittedReportsForExperiment(CreateKuriosityReportID(kuriosityExperimentToCheck, kerbalId)).Count == 0) return false;
+                string experimentId = CreateKuriosityReportID(kuriosityExperimentToCheck, kerbalId);
+                /// TODO: Remove this - it supports old experiment IDs.
+                string oldExperimentId = experimentId.Substring("kuriosity_experiment_".Length);
+                foreach (var report in completedReports)
+                {
+                    if (report.ExperimentId == experimentId || report.ExperimentId == oldExperimentId)
+                        return true;
+                }
             }
         }
 
-        return true;
+        return false;
     }
 
     /// <summary>
